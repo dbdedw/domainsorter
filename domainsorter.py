@@ -1,6 +1,6 @@
 import os.path, os
 checks = 0
-usernames = []
+emails = []
 passwords = []
 
 if not os.path.exists("./input.txt"):
@@ -16,15 +16,15 @@ os.makedirs('results/sorter/{}'.format(checkname))
 with open("input.txt", "r+", encoding='utf-8') as s:
     sx = s.readlines()
     for x in sx:
-      username = x.split(":")[0].replace('\n', '')
+      email = x.split(":")[0].replace('\n', '')
       password = x.split(":")[1].replace('\n', '')
-      usernames.append(username)
+      emails.append(email)
       passwords.append(password)
-      if checks <len(usernames):
-        while checks <len(usernames):
-          if username.__contains__(domainname):
-            open('results/sorter/{}/{}.txt'.format(checkname, domainname),'a+').write("{}{}\n".format(username, password))
+      if checks <len(emails):
+        while checks <len(emails):
+          if email.__contains__(domainname):
+            open('results/sorter/{}/{}.txt'.format(checkname, domainname),'a+').write("{}{}\n".format(email, password))
             checks+=1
           else:
-            open('results/sorter/{}/no{}.txt'.format(checkname, domainname),'a+').write("{}{}\n".format(username, password))
+            open('results/sorter/{}/no{}.txt'.format(checkname, domainname),'a+').write("{}{}\n".format(email, password))
             checks+=1
